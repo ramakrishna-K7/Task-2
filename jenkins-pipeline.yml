@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('code checkout from github') {
+            steps {
+                git branch: 'main', credentialsId: 'git', url: 'https://github.com/ramakrishna-K7/Task-2.git'
+            }
+        }
+        stage('build'){
+            steps{
+               echo 'tools is not mentioned'
+            }
+        }
+        stage('test'){
+            steps{
+                echo 'tools is not mentioned'
+            }
+        }
+        stage('deploy'){
+            steps{
+                sh 'docker build -t app . '
+                sh ' docker run -it --name thunder -p 80:80 app'
+            }
+        }
+    }
+}
