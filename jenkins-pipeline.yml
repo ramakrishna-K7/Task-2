@@ -20,7 +20,7 @@ pipeline {
         stage('deploy'){
             steps{
                 sh 'docker build -t apache . '
-                sh ' docker run -it --name thunder -p 80:80 apache'
+                sh ' docker run -d --name thunder -p 80:80 apache'
             }
         }
     }
